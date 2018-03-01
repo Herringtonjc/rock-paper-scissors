@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+  <script>
+  let choices = ["Rock", "Paper", "Scissors"];
+  let computerScore = 0;
+  let playerScore = 0;
+
+  function computerPlay() {
+    //Allow the computer to randomly choose one of the choices
+    let computerChoice = Math.floor(Math.random() * 3);
+
+    return choices[computerChoice];
+  }
+
+  function playRound(playerSelection, computerSelection) {
+    //Compare the playerSelection to the computerSelection
+    //Rock > Scissors
+    //Paper > Rock
+    //Scissors > Paper
+
+  }
+
+  console.log(computerPlay())
+  </script>
+</body>
+</html>
