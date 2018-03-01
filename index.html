@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Rock, Paper, Scissors</title>
 </head>
 <body>
   <script>
-  let choices = ["Rock", "Paper", "Scissors"];
-  let computerScore = 0;
-  let playerScore = 0;
+  let choices = ["rock", "paper", "scissors"];
+  let playerChoice = prompt("Please enter 'rock', 'paper', or 'scissors'").toLowerCase();
 
   function computerPlay() {
-    //Allow the computer to randomly choose one of the choices
     let computerChoice = Math.floor(Math.random() * 3);
-
     return choices[computerChoice];
   }
 
   function playRound(playerSelection, computerSelection) {
     //Compare the playerSelection to the computerSelection
-    //Rock > Scissors
-    //Paper > Rock
-    //Scissors > Paper
-
+    if (playerSelection == "rock" && computerSelection == "scissors") {
+      return "You win! Rock beats Scissors.";
+    } else if (playerSelection == "rock" && computerSelection == "paper") {
+      return "You lose! Paper beats Rock.";
+    } else if (playerSelection == "scissors" && computerSelection == "paper") {
+      return "You win! Scissors beats Paper.";
+    } else if (playerSelection == "scissors" && computerSelection == "rock") {
+      return "You lose! Rock beats Scissors.";
+    } else if (playerSelection == "paper" && computerSelection == "rock") {
+      return "You win! Paper beats Rock.";
+    } else if (playerSelection == "paper" && computerSelection == "scissors") {
+      return "You lose! Scissors beats Paper.";
+    } else {
+      return "You tied!";
+    }
   }
 
-  console.log(computerPlay())
+  console.log(playRound(playerChoice, computerPlay()));
+
   </script>
 </body>
 </html>
