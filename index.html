@@ -13,7 +13,12 @@
   function humanPlay() {
     //Allow the human to make a choice
     let playerChoice = prompt("Please enter 'rock', 'paper', or 'scissors'").toLowerCase();
-    return playerChoice;
+    if (choices.indexOf(playerChoice) > -1) {
+      return playerChoice;
+    } else {
+      console.log("That is not a valid choice!");
+      humanPlay();
+    }
   }
 
   function computerPlay() {
