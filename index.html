@@ -3,16 +3,71 @@
 <head>
   <meta charset="utf-8">
   <title>Rock, Paper, Scissors</title>
-  <link rel="stylesheet" src="style.css" />
 </head>
 <body>
+  <script>
+  let choices = ["rock", "paper", "scissors"];
+  let playerScore = 0;
+  let computerScore = 0;
+  
+  function humanPlay() {
+    //Allow the human to make a choice
+    let playerChoice = prompt("Please enter 'rock', 'paper', or 'scissors'").toLowerCase();
+    if (choices.indexOf(playerChoice) > -1) {
+      return playerChoice;
+    } else {
+      console.log("That is not a valid choice!");
+      humanPlay();
+    }
+  }
 
-  <div class="container">
-      <button id="rock">Rock</button>
-      <button id="paper">Paper</button>
-      <button id="scissors">Scissors</button>
-  </div>
+  function computerPlay() {
+    //Allow the computer to make a random choice
+    let computerChoice = Math.floor(Math.random() * 3);
+    return choices[computerChoice];
+  }
 
-  <script src="script.js"></script>
+  function playRound(playerSelection, computerSelection) {
+    //Compare the playerSelection to the computerSelection
+    if (playerSelection == "rock" && computerSelection == "scissors") {
+      playerScore+=1;
+      return "You win! Rock beats Scissors.";
+    } else if (playerSelection == "rock" && computerSelection == "paper") {
+      computerScore+=1;
+      return "You lose! Paper beats Rock.";
+    } else if (playerSelection == "scissors" && computerSelection == "paper") {
+      playerScore+=1;
+      return "You win! Scissors beats Paper.";
+    } else if (playerSelection == "scissors" && computerSelection == "rock") {
+      computerScore+=1;
+      return "You lose! Rock beats Scissors.";
+    } else if (playerSelection == "paper" && computerSelection == "rock") {
+      playerScore+=1;
+      return "You win! Paper beats Rock.";
+    } else if (playerSelection == "paper" && computerSelection == "scissors") {
+      computerScore+=1;
+      return "You lose! Scissors beats Paper.";
+    } else {
+      return "You tied!";
+    }
+  }
+
+  function game() {
+    for(let i = 0; i < 5; i++) {
+      console.log(playRound(humanPlay(), computerPlay()));
+    }
+
+    if(playerScore > computerScore) {
+        console.log("You win the game!");
+      } else if (computerScore > playerScore) {
+        console.log("The Computer wins the game!");
+      } else {
+        console.log("It was a tie!");
+      }
+  }
+
+  game();
+
+  </script>
 </body>
 </html>
